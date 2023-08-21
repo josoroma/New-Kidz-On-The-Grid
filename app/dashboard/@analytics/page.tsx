@@ -1,3 +1,3 @@
 export default function Page() {
-  return <h2>Dashboard - Analytics Parallel Page</h2>
+  return <p className="pb-4">Analytics Parallel Slot</p>;
 }

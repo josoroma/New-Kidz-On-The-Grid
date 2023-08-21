@@ -2,6 +2,8 @@ import "./globals.css";
 
 import { Inter } from "next/font/google";
 
+import Provider from "@/components/provider";
+
 import Header from "@/components/Header";
 import Main from "@/components/Main";
 import Nav from "@/components/Nav";
@@ -36,11 +38,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} rootLayout`}>
-        <Header />
-        <Main nav={<Nav />}>{children}</Main>
-        <Footer />
+    <html lang="en" suppressHydrationWarning>
+      <head></head>
+      <body className={`${inter.className} custom-root-layout`}>
+        <Provider>
+          <Header />
+          <Main nav={<Nav />}>{children}</Main>
+          <Footer />
+        </Provider>
       </body>
     </html>
   );

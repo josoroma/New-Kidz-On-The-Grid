@@ -1,4 +1,4 @@
-export default function ScrollMe() {
+export default function Content() {
   return (
     <>
       <h2>Welcome to Our Content Journey!</h2>

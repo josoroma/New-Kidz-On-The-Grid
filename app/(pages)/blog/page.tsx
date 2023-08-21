@@ -8,7 +8,7 @@ async function getPosts() {
 export default async function Page() {
   const results = await getPosts();
   return (
-    <div className="customPage">
+    <div className="custom-page">
       <h2>Blog Posts</h2>
       {results &&
         results.map((index: { id: string; title: string }) => {

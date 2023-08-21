@@ -14,23 +14,23 @@ export default function Main({
   return (
     <main className="flex-1 flex overflow-y-hidden">
       <aside
-        className={`bg-gray-200 p-4 relative ${
-          isAsideCollapsed ? "w-0 flex-shrink-0" : "min-w-[300px] w-3/10"
+        className={`bg-gray-200 p-4 relative transition-all duration-300 ease-in-out ${
+          isAsideCollapsed
+            ? "w-0 flex-shrink-0 animate-out slide-out-to-left"
+            : "min-w-[300px] w-3/10 animate-in slide-in-from-left"
         }`}
       >
         <nav className={`sticky top-4 ${isAsideCollapsed ? "hidden" : ""}`}>
           {nav}
         </nav>
         <button
-          className="absolute top-1/2 right-[-.9rem] transform -translate-y-1/2 bg-yellow-300 text-black rounded-full w-7 h-7 flex items-center justify-center"
+          className={`absolute top-1/2 right-[-.9rem] transform -translate-y-1/2 dark:bg-yellow-300 bg-gray-300 text-black rounded-full w-7 h-7 flex items-center justify-center`}
           onClick={() => setIsAsideCollapsed(!isAsideCollapsed)}
         >
           {isAsideCollapsed ? "⇨" : "⇦"}
         </button>
       </aside>
-      <section className="bg-yellow-300 p-4 text-black flex-grow">
-        {children}
-      </section>
+      <section className="p-4 flex-grow">{children}</section>
     </main>
   );
 }

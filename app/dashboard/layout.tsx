@@ -15,7 +15,7 @@ export default function DashboardLayout({
   projects: React.ReactNode;
 }) {
   return (
-    <div className="customDashboardPageLayout">
+    <div className="custom-dashboard-page-layout">
       {children}
       {/* Parallel Routing */}
       <div className="grid grid-cols-2 gap-4">
@@ -23,7 +23,6 @@ export default function DashboardLayout({
           {analytics}
         </div>
         <div className="bg-black text-yellow-500 flex-grow p-4 pb-0">
-          {projects}
           {projects}
         </div>
       </div>

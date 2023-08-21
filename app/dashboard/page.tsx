@@ -1,10 +1,10 @@
-import ScrollMe from "@/components/scrollMe";
+import Content from "@/components/content";
 
 export default function Page() {
   return (
-    <div className="customPage">
+    <div className="custom-page">
       <h2>Dashboard Page</h2>
-      <ScrollMe />
+      <Content />
     </div>
   );
 }

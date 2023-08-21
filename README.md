@@ -2,6 +2,17 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+![Dark](shadcn-dark.png)
+
+![Light](shadcn-light.png)
+
+### Add to your .env file
+
+```
+WATCHPACK_POLLING=true
+CHOKIDAR_USEPOLLING=true
+```
+
 First, run the development server:
 
 ```bash
