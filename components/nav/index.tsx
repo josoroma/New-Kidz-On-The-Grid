@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Nav() {
   return (
-    <>
+    <nav>
       <Link href="/">
         <div className="text-black bg-gray-300 hover:text-yellow-500 hover:bg-black p-2 rounded mb-2 cursor-pointer">
           Home
@@ -38,6 +38,6 @@ export default function Nav() {
           Dashboard
         </div>
       </Link>
-    </>
+    </nav>
   );
 }
