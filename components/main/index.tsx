@@ -30,7 +30,7 @@ export default function Main({
           {isAsideCollapsed ? "⇨" : "⇦"}
         </button>
       </aside>
-      <section className="p-4 flex-grow">{children}</section>
+      <section className="p-2 flex-grow">{children}</section>
     </main>
   );
 }
