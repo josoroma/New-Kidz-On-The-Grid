@@ -10,8 +10,8 @@ export default function Page() {
         classes={{
           background: "dark:bg-gray-800 black:bg-gray-700 bg-gray-100",
           stepCircle:
-            "bg-gray-600 text-white hover:bg-gray-600 hover:text-white",
-          connector: "dark:bg-gray-700 bg-gray-200",
+            "bg-gray-400 text-white hover:bg-gray-400 hover:text-white",
+          connector: "dark:bg-gray-700 bg-gray-300",
           nav: "bg-green-700 text-white hover:bg-green-800",
         }}
         stepContents={[
