@@ -18,11 +18,13 @@ export default function DashboardLayout({
     <div className="custom-dashboard-page-layout">
       {children}
       {/* Parallel Routing */}
-      <div className="grid grid-cols-2 gap-6">
-        <div className="bg-black text-yellow-500 flex-grow p-4 pb-0">
+      <div className="flex space-x-6">
+        {" "}
+        {/* Updated from grid to flex */}
+        <div className="dark:bg-gray-800 bg-black text-yellow-500 flex-grow p-4">
           {analytics}
         </div>
-        <div className="bg-black text-yellow-500 flex-grow p-4 pb-0">
+        <div className="dark:bg-gray-800 bg-black text-yellow-500 flex-grow p-4">
           {projects}
         </div>
       </div>
