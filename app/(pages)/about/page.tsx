@@ -1,12 +1,12 @@
 "use client";
 
 import Content from "@/components/content";
-import Stepper from "@/components/stepper";
+import Walkthrough from "@/components/walkthrough";
 
 export default function Page() {
   return (
     <div className="custom-page">
-      <Stepper
+      <Walkthrough
         classes={{
           background: "dark:bg-gray-800 black:bg-gray-700 bg-gray-100",
           stepCircle:

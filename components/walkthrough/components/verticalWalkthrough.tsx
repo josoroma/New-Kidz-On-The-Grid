@@ -1,29 +1,8 @@
-import React, { ReactNode, useRef } from "react";
+import { FC, createRef, Fragment, useRef } from "react";
 import { Button } from "@/components/ui/Button";
+import { VerticalWalkthroughProps } from "../types";
 
-// Define the styles that can be customized for the stepper.
-interface Classes {
-  background?: string; // Custom class for the background.
-  stepCircle?: string; // Custom class for the step circle.
-  connector?: string; // Custom class for the steps connector.
-  nav?: string; // Custom class for the navigation buttons (Back/Next).
-}
-
-// Define the prop types for the VerticalStepper component.
-interface VerticalStepperProps {
-  key: string | number; // Unique identifier for React rendering and DOM.
-  classes: Classes; // Customizable styles for various elements.
-  currentStep: number; // Indicates the current active step.
-  totalSteps: number; // Total number of steps in the stepper.
-  goBack: () => void; // Handler for the "Back" button.
-  goNext: () => void; // Handler for the "Next" button.
-  stepContents: {
-    description: ReactNode; // Content of each step, can be any React node.
-  }[];
-  contentHeights: number[]; // Heights of the content for each step.
-}
-
-const VerticalStepper: React.FC<VerticalStepperProps> = ({
+const VerticalWalkthrough: FC<VerticalWalkthroughProps> = ({
   key = "id", // Default value for key.
   classes,
   currentStep,
@@ -36,7 +15,7 @@ const VerticalStepper: React.FC<VerticalStepperProps> = ({
   // Refs to access the DOM elements directly.
   const stepperContainerRef = useRef<HTMLDivElement | null>(null);
   const contentRefs = useRef(
-    stepContents.map(() => React.createRef<HTMLDivElement>())
+    stepContents.map(() => createRef<HTMLDivElement>())
   );
 
   // Calculate dynamic dimensions for layout adjustments.
@@ -69,7 +48,7 @@ const VerticalStepper: React.FC<VerticalStepperProps> = ({
 
         {/* Render the step circles and connecting lines. */}
         {Array.from({ length: totalSteps }).map((_, index) => (
-          <React.Fragment key={index}>
+          <Fragment key={index}>
             {/* Conditional spacer for distributing distance evenly */}
             {index === 0 ? (
               <div
@@ -89,7 +68,7 @@ const VerticalStepper: React.FC<VerticalStepperProps> = ({
             >
               {index + 1}
             </Button>
-          </React.Fragment>
+          </Fragment>
         ))}
 
         {/* Conditional spacer after the last step circle */}
@@ -127,4 +106,4 @@ const VerticalStepper: React.FC<VerticalStepperProps> = ({
   );
 };
 
-export default VerticalStepper;
+export default VerticalWalkthrough;

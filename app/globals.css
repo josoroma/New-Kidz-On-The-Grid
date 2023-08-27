@@ -89,7 +89,7 @@
   }
 
   .custom-root-layout {
-    @apply grid grid-flow-row h-screen;
+    @apply flex flex-col h-screen;
   }
 
   .custom-section-layout {
@@ -97,15 +97,15 @@
   }
 
   .custom-dashboard-page-layout {
-    @apply grid grid-flow-row h-[calc(100vh-120px)] p-6;
+    @apply flex flex-col h-[calc(100vh-120px)] p-6;
   }
 
   .custom-dashboard-page {
-    @apply bg-background text-foreground grid grid-flow-row h-[calc(100vh-240px)] overflow-y-auto p-4 prose-base scroll-smooth;
+    @apply bg-background text-foreground flex flex-col h-[calc(100vh-240px)] overflow-y-auto p-4 prose-base scroll-smooth;
   }
 
   .custom-page-layout {
-    @apply grid grid-flow-row h-[calc(100vh-120px)] p-6;
+    @apply flex flex-col h-[calc(100vh-120px)] p-6;
   }
 
   .custom-page {
@@ -113,6 +113,6 @@
   }
 
   .custom-page-with-centered-content {
-    @apply grid place-items-center h-[calc(100vh-120px)];
+    @apply flex items-center justify-center h-[calc(100vh-120px)];
   }
 }

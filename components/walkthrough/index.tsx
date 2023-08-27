@@ -1,39 +1,25 @@
-import React, { useEffect, useState, useRef, FC, ReactNode } from "react";
+import { FC, createRef, useEffect, useState, useRef } from "react";
 import useForceRerender from "./hooks/useForceRerender";
-import HorizontalStepper from "./components/horizontalStepper";
-import VerticalStepper from "./components/verticalStepper";
+import HorizontalWalkthrough from "./components/horizontalWalkthrough";
+import VerticalWalkthrough from "./components/verticalWalkthrough";
+import { WalkthroughProps } from "./types";
 
-interface StepContent {
-  title: string;
-  description: ReactNode;
-}
-
-interface Classes {
-  background?: string;
-  stepCircle?: string;
-  connector?: string;
-  nav?: string;
-}
-
-interface StepperProps {
-  classes?: Classes;
-  stepContents: StepContent[];
-  variation?: "horizontal" | "vertical";
-}
-
-const Stepper: FC<StepperProps> = ({
+const Walkthrough: FC<WalkthroughProps> = ({
   classes = {},
   stepContents,
   variation = "horizontal",
 }) => {
   const [currentStep, setCurrentStep] = useState(1);
-  const totalSteps = stepContents.length;
+  const [contentHeights, setContentHeights] = useState<number[]>([]);
+
   const currentContent = stepContents[currentStep - 1];
   const key = useForceRerender(currentContent.title);
+
   const contentRefs = useRef(
-    stepContents.map(() => React.createRef<HTMLDivElement>())
+    stepContents.map(() => createRef<HTMLDivElement>())
   );
-  const [contentHeights, setContentHeights] = useState<number[]>([]);
+
+  const totalSteps = stepContents.length;
 
   useEffect(() => {
     const heights = contentRefs.current.map(
@@ -55,7 +41,7 @@ const Stepper: FC<StepperProps> = ({
   };
 
   return variation === "horizontal" ? (
-    <HorizontalStepper
+    <HorizontalWalkthrough
       key={key}
       classes={classes}
       currentStep={currentStep}
@@ -65,7 +51,7 @@ const Stepper: FC<StepperProps> = ({
       currentContent={stepContents[currentStep - 1]}
     />
   ) : (
-    <VerticalStepper
+    <VerticalWalkthrough
       key={key}
       classes={classes}
       currentStep={currentStep}
@@ -78,4 +64,4 @@ const Stepper: FC<StepperProps> = ({
   );
 };
 
-export default Stepper;
+export default Walkthrough;

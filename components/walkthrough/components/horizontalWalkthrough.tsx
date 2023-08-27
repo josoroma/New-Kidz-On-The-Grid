@@ -1,30 +1,9 @@
-import React, { ReactNode } from "react";
+import { FC, Fragment } from "react";
 import { Button } from "@/components/ui/Button";
+import { HorizontalWalkthroughProps } from "../types";
 
-// Define the styles that can be customized for the stepper.
-interface Classes {
-  background?: string; // Custom class for the background.
-  stepCircle?: string; // Custom class for the step circle.
-  connector?: string; // Custom class for the steps connector.
-  nav?: string; // Custom class for the navigation buttons (Back/Next).
-}
-
-// Define the prop types for the HorizontalStepper component.
-interface HorizontalStepperProps {
-  key: string | number; // Unique identifier for React rendering and DOM.
-  classes: Classes; // Customizable styles for various elements.
-  currentStep: number; // Indicates the current active step.
-  totalSteps: number; // Total number of steps in the stepper.
-  goBack: () => void; // Handler for the "Back" button.
-  goNext: () => void; // Handler for the "Next" button.
-  currentContent: {
-    // Content of the current step.
-    description: ReactNode; // Description can be any valid React node.
-  };
-}
-
-// Define the HorizontalStepper component.
-const HorizontalStepper: React.FC<HorizontalStepperProps> = ({
+// Define the HorizontalWalkthrough component.
+const HorizontalWalkthrough: FC<HorizontalWalkthroughProps> = ({
   key = "id", // Default value for key.
   classes,
   currentStep,
@@ -56,7 +35,7 @@ const HorizontalStepper: React.FC<HorizontalStepperProps> = ({
 
         {/* Loop through all steps and render step circles and lines */}
         {Array.from({ length: totalSteps }).map((_, index) => (
-          <React.Fragment key={index}>
+          <Fragment key={index}>
             {/* Step circle button */}
             <Button
               className={`${
@@ -68,7 +47,7 @@ const HorizontalStepper: React.FC<HorizontalStepperProps> = ({
 
             {/* Line between the current step circle and the next one */}
             <div className="flex-1 h-0.5 w-1 dark:bg-gray-900 bg-gray-200"></div>
-          </React.Fragment>
+          </Fragment>
         ))}
 
         {/* Next navigation button */}
@@ -91,4 +70,4 @@ const HorizontalStepper: React.FC<HorizontalStepperProps> = ({
   </>
 );
 
-export default HorizontalStepper;
+export default HorizontalWalkthrough;
