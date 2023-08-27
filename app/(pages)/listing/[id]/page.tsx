@@ -5,7 +5,7 @@ export default function Page({ params }: { params: { id: string } }) {
   return (
     <div className="custom-page">
       <h2>Listing Page ID: {id}</h2>
-      <Content />
+      <p>Short-form content.</p>
     </div>
   );
 }

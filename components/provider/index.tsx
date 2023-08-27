@@ -7,7 +7,7 @@ export default function Provider({ children }: { children: React.ReactNode }) {
   return (
     <NextThemesProvider attribute="class" defaultTheme="system" enableSystem>
       {children}
-      <Toggle className="absolute top-2 right-6 z-10" />
+      <Toggle className="absolute top-1 right-6 z-10" />
     </NextThemesProvider>
   );
 }

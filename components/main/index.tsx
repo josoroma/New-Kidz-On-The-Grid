@@ -33,22 +33,20 @@ export default function Main({
 
   return (
     <main
-      className={`grid h-full overflow-y-hidden ${
-        isAsideCollapsed ? "grid-cols-[0px,1fr]" : "grid-cols-[285px,1fr]"
+      className={`flex h-full overflow-y-hidden ${
+        isAsideCollapsed ? "w-full" : ""
       }`}
     >
       <aside
         className={`bg-background relative transition-all duration-300 ease-in-out ${
           isAsideCollapsed
             ? "animate-out slide-out-to-left p-2.5"
-            : "animate-in slide-in-from-left bg-gray-200 p-4"
+            : "animate-in slide-in-from-left bg-gray-200 p-4 flex-shrink-0 w-[285px]"
         }`}
       >
-        <nav className={`sticky top-4 ${isAsideCollapsed ? "hidden" : ""}`}>
-          {nav}
-        </nav>
+        <nav className={`${isAsideCollapsed ? "hidden" : ""}`}>{nav}</nav>
         <Button
-          className={`absolute top-1/2 right-[-.9rem] transform rounded-full w-7 h-7 grid place-items-center p-0 m-0`}
+          className={`absolute top-1/2 right-[-.9rem] transform rounded-full w-7 h-7 flex items-center justify-center p-0 m-0`}
           onClick={() => setIsAsideCollapsed(!isAsideCollapsed)}
         >
           {isAsideCollapsed ? (
@@ -58,7 +56,7 @@ export default function Main({
           )}
         </Button>
       </aside>
-      <section className={`${isAsideCollapsed ? "p-4 px-8" : "p-2"}`}>
+      <section className={`flex-grow ${isAsideCollapsed ? "p-4 px-8" : "p-2"}`}>
         {children}
       </section>
     </main>
