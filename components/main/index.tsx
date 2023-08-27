@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { ChevronRight, ChevronLeft } from "lucide-react";
+import { Button } from "@/components/ui/Button";
 
 export default function Main({
   children,
@@ -45,12 +47,16 @@ export default function Main({
         <nav className={`sticky top-4 ${isAsideCollapsed ? "hidden" : ""}`}>
           {nav}
         </nav>
-        <button
-          className={`absolute top-1/2 right-[-.9rem] transform -translate-y-1/2 dark:bg-yellow-300 bg-gray-300 text-black rounded-full w-7 h-7 grid place-items-center`}
+        <Button
+          className={`absolute top-1/2 right-[-.9rem] transform rounded-full w-7 h-7 grid place-items-center p-0 m-0`}
           onClick={() => setIsAsideCollapsed(!isAsideCollapsed)}
         >
-          {isAsideCollapsed ? "⇨" : "⇦"}
-        </button>
+          {isAsideCollapsed ? (
+            <ChevronRight className="h-4 w-4" />
+          ) : (
+            <ChevronLeft className="h-4 w-4" />
+          )}
+        </Button>
       </aside>
       <section className={`${isAsideCollapsed ? "p-4 px-8" : "p-2"}`}>
         {children}
