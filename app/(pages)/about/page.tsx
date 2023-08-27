@@ -8,17 +8,14 @@ export default function Page() {
     <div className="custom-page">
       <Stepper
         classes={{
-          stepCircle: "bg-blue-500 text-white",
-          nav: "bg-yellow-500 text-black hover:bg-yellow-300",
+          stepCircle:
+            "bg-gray-600 text-white hover:bg-gray-600 hover:text-white",
+          nav: "bg-green-700 text-white hover:bg-green-800",
         }}
         stepContents={[
           {
             title: "Step 1",
-            description: (
-              <div>
-                <Content />
-              </div>
-            ),
+            description: <div>Content</div>,
           },
           {
             title: "Step 2",
@@ -30,14 +27,22 @@ export default function Page() {
           },
           {
             title: "Step 3",
+            description: <div>Content</div>,
+          },
+          {
+            title: "Step 4",
             description: (
               <div>
                 <Content />
               </div>
             ),
           },
+          {
+            title: "Step 5",
+            description: <div>Content</div>,
+          },
         ]}
-        variation="vertical"
+        variation="horizontal"
       />
     </div>
   );
