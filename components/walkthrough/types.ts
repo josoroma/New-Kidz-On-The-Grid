@@ -35,7 +35,12 @@ export interface HorizontalWalkthroughProps {
   goNext: () => void;
   currentContent: {
     description: ReactNode;
+    title: string;
   };
+  stepContents: {
+    description: ReactNode;
+    title: string;
+  }[];
 }
 
 /**
@@ -51,6 +56,7 @@ export interface VerticalWalkthroughProps {
   goNext: () => void;
   stepContents: {
     description: ReactNode;
+    title: string;
   }[];
   contentHeights: number[];
 }

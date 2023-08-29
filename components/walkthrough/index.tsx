@@ -49,6 +49,7 @@ const Walkthrough: FC<WalkthroughProps> = ({
       goBack={goBack}
       goNext={goNext}
       currentContent={stepContents[currentStep - 1]}
+      stepContents={stepContents}
     />
   ) : (
     <VerticalWalkthrough

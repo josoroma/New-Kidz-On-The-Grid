@@ -52,7 +52,7 @@ export default function Page() {
             description: <div>Content</div>,
           },
         ]}
-        variation="vertical"
+        variation="horizontal"
       />
     </div>
   );

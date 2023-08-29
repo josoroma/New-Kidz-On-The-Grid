@@ -1,5 +1,11 @@
 import { FC, Fragment } from "react";
 import { Button } from "@/components/ui/Button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { HorizontalWalkthroughProps } from "../types";
 
 // Define the HorizontalWalkthrough component.
@@ -11,6 +17,7 @@ const HorizontalWalkthrough: FC<HorizontalWalkthroughProps> = ({
   goBack,
   goNext,
   currentContent,
+  stepContents,
 }) => (
   <>
     {/* Wrapper div for the entire stepper */}
@@ -33,22 +40,30 @@ const HorizontalWalkthrough: FC<HorizontalWalkthroughProps> = ({
         {/* Line before the first step circle */}
         <div className={`flex-1 h-0.5 w-1 ${classes.connector}`}></div>
 
-        {/* Loop through all steps and render step circles and lines */}
-        {Array.from({ length: totalSteps }).map((_, index) => (
-          <Fragment key={index}>
-            {/* Step circle button */}
-            <Button
-              className={`${
-                currentStep === index + 1 ? `${classes.stepCircle}` : ""
-              } w-10 h-10 rounded-full flex items-center justify-center disabled cursor-default`}
-            >
-              {index + 1}
-            </Button>
-
-            {/* Line between the current step circle and the next one */}
-            <div className="flex-1 h-0.5 w-1 dark:bg-gray-900 bg-gray-200"></div>
-          </Fragment>
-        ))}
+        <TooltipProvider>
+          {/* Loop through all steps and render step circles and lines */}
+          {Array.from({ length: totalSteps }).map((_, index) => (
+            <Fragment key={index}>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  {/* Step circle button */}
+                  <Button
+                    className={`${
+                      currentStep === index + 1 ? `${classes.stepCircle}` : ""
+                    } w-10 h-10 rounded-full flex items-center justify-center disabled cursor-default`}
+                  >
+                    {index + 1}
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <div>{stepContents?.[index]?.title}</div>
+                </TooltipContent>
+              </Tooltip>
+              {/* Line between the current step circle and the next one */}
+              <div className="flex-1 h-0.5 w-1 dark:bg-gray-900 bg-gray-200"></div>
+            </Fragment>
+          ))}
+        </TooltipProvider>
 
         {/* Next navigation button */}
         <Button

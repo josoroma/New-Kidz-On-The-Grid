@@ -1,5 +1,11 @@
 import { FC, createRef, Fragment, useRef } from "react";
 import { Button } from "@/components/ui/Button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { VerticalWalkthroughProps } from "../types";
 
 const VerticalWalkthrough: FC<VerticalWalkthroughProps> = ({
@@ -46,30 +52,39 @@ const VerticalWalkthrough: FC<VerticalWalkthroughProps> = ({
           ←
         </Button>
 
-        {/* Render the step circles and connecting lines. */}
-        {Array.from({ length: totalSteps }).map((_, index) => (
-          <Fragment key={index}>
-            {/* Conditional spacer for distributing distance evenly */}
-            {index === 0 ? (
-              <div
-                style={{ flex: 1 }}
-                className="w-0.5 bg-transparent mx-auto"
-              ></div>
-            ) : (
-              <div
-                className={`flex-grow w-0.5 mx-auto ${classes.connector}`}
-              ></div>
-            )}
-            {/* Step circle */}
-            <Button
-              className={`${
-                currentStep === index + 1 ? `${classes.stepCircle}` : ""
-              } w-10 h-10 rounded-full flex items-center justify-center disabled cursor-default`}
-            >
-              {index + 1}
-            </Button>
-          </Fragment>
-        ))}
+        <TooltipProvider>
+          {/* Render the step circles and connecting lines. */}
+          {Array.from({ length: totalSteps }).map((_, index) => (
+            <Fragment key={index}>
+              {/* Conditional spacer for distributing distance evenly */}
+              {index === 0 ? (
+                <div
+                  style={{ flex: 1 }}
+                  className="w-0.5 bg-transparent mx-auto"
+                ></div>
+              ) : (
+                <div
+                  className={`flex-grow w-0.5 mx-auto ${classes.connector}`}
+                ></div>
+              )}
+              {/* Step circle */}
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    className={`${
+                      currentStep === index + 1 ? `${classes.stepCircle}` : ""
+                    } w-10 h-10 rounded-full flex items-center justify-center disabled cursor-default`}
+                  >
+                    {index + 1}
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <div>{stepContents?.[index]?.title}</div>
+                </TooltipContent>
+              </Tooltip>
+            </Fragment>
+          ))}
+        </TooltipProvider>
 
         {/* Conditional spacer after the last step circle */}
         <div style={{ flex: 1 }} className="w-0.5 bg-transparent mx-auto"></div>
